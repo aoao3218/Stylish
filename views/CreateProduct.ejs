@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <h2>Create New Product</h2>
+    <% if (msg) { %>
+    <script>
+      alert("<%= msg %>");
+    </script>
+    <% } %>
+    <form
+      method="POST"
+      action="/admin/product"
+      enctype="multipart/form-data"
+      id="create"
+    >
+      <div class="frame content">
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select name="category" id="category" class="form-control" required>
+            <option value="">Select category</option>
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+            <option value="accessories">Accessories</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            class="form-control"
+            min="1"
+            step="1"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="texture">Texture:</label>
+          <input type="text" name="texture" id="texture" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="wash">Wash:</label>
+          <input type="text" name="wash" id="wash" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="place">Place:</label>
+          <input
+            type="text"
+            name="place"
+            id="place"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="note">Note:</label>
+          <input type="text" name="note" id="note" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="story">Story:</label>
+          <input type="text" name="story" id="story" class="form-control" />
+        </div>
+      </div>
+      <h3>Variant</h3>
+      <div class="frame variants content" id="variant">
+        <div class="form-group2">
+          <label for="color">Color:</label>
+          <div style="display: flex; flex-direction: row; flex-grow: 1">
+            <input
+              type="text"
+              name="color_name"
+              id="color_name"
+              placeholder="color name"
+              class="form-control"
+              required
+            />
+            <input
+              type="color"
+              name="color_code"
+              id="color_code"
+              class="form-control"
+              style="width: 100%"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label for="size">Size:</label>
+          <select name="size" id="size" class="form-control" required>
+            <option value="">Select Size</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="2L">2L</option>
+          </select>
+        </div>
+
+        <div class="form-group2">
+          <label for="stock">Stock:</label>
+          <input
+            type="number"
+            name="stock"
+            id="stock"
+            class="form-control"
+            min="1"
+            step="1"
+            required
+          />
+        </div>
+      </div>
+      <button class="btn-sec" id="add-variant">Add variant</button>
+
+      <h3>Images</h3>
+      <div class="frame content">
+        <div class="form-group3">
+          <label for="main_image">Main Image:</label>
+          <input
+            type="file"
+            name="main_image"
+            id="mainImage"
+            class="form-control"
+            accept="image/jpeg,image/png"
+            max-file-size="1048576"
+            required
+          />
+        </div>
+
+        <div class="form-group3">
+          <label for="images">Images:</label>
+          <div class="other-images">
+            <input
+              type="file"
+              name="images"
+              class="form-caontrol"
+              id="otherImage"
+              accept="image/jpeg,image/png"
+              max-file-size="1048576"
+              multiple
+            />
+          </div>
+        </div>
+      </div>
+      <button class="btn-sec" id="add-image">Add Image</button>
+      <button type="submit" class="btn">Create Product</button>
+    </form>
+  </body>
+  <script>
+    const addVariant = document.getElementById("add-variant");
+    const variants = document.querySelector(".variants");
+    const addImage = document.getElementById("add-image");
+    const images = document.querySelector(".other-images");
+
+    addImage.addEventListener("click", (e) => {
+      e.preventDefault();
+      const otherImage = document.querySelector("#otherImage");
+      images.insertAdjacentHTML("afterend", otherImage.outerHTML);
+    });
+    addVariant.addEventListener("click", (e) => {
+      e.preventDefault();
+      const variant = document.querySelector("#variant");
+      variants.insertAdjacentHTML("afterend", variant.outerHTML);
+    });
+  </script>
+</html>

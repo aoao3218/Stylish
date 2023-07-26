@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='stylesheet' href='/styles/style.css' />
+    <script
+      async
+      defer
+      crossorigin='anonymous'
+      src='https://connect.facebook.net/en_US/sdk.js'
+    ></script>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '1284699225779377',
+          cookie: true, // Enable cookies to allow the server to access the session.
+          xfbml: true, // Parse social plugins on this webpage.
+          version: 'v16.0', // Use this Graph API version for this call.
+        });
+      };
+    </script>
+    <title>user</title>
+  </head>
+  <body>
+    <div class="header row center">
+      <div class="row">
+        <a href="/index.html" class="logo">
+          <img src="/images/logo.png" alt="logo" id="logo" />
+        </a>
+        <div class="web_tab">
+          <a href="/index.html?category=women" class="font-20 tab">女裝</a>
+          <a href="/index.html?category=men" class="font-20 border-left tab">男裝</a>
+          <a href="/index.html?category=accessories" class="font-20 border-left tab"
+            >配件</a
+          >
+        </div>
+      </div>
+      <div class="row">
+        <input type='text' id="search"/>
+        <img src="/images/cart.png" alt="cart" class="icon" id="cart-top" />
+        <a href="/profile.html">
+          <img
+            src="/images/member.png"
+            alt="member"
+            class="icon"
+            id="member-top"
+        /></a>
+      </div>
+    </div>
+    <div class="line">
+      <div class="mb_tab">
+        <a href="/index.html?category=women" class="font-20">女裝</a>
+        <a href="/index.html?category=men" class="font-20 border-left">男裝</a>
+        <a href="/index.html?category=accessories" class="font-20 border-left">配件</a>
+      </div>
+    </div>
+    <div class='frame content'>
+      <div class='box column'>
+        <% if(msg){ %>
+          <p style="margin: 10px auto;"><%= msg %></p>
+        <% } %>  
+        <div class='row switch'>
+          <button
+            onclick="toggleForm('register')"
+            class='tab active'
+            id='register'
+          >
+            註冊
+          </button>
+          <button onclick="toggleForm('login')" class='tab' id='login'>
+            登入
+          </button>
+        </div>
+        <div id='register-form' class='form'>
+          <form action='/signup' method='POST' class='column'>
+            <label for='name'>name:</label>
+            <input type='text' name='name' id='name' required />
+            <br />
+            <label for='email'>Email:</label>
+            <input type='email' name='email' id='email' required />
+            <br />
+            <label for='password'>Password:</label>
+            <input type='password' name='password' id='password' required />
+            <button type='submit' class='btn'>sign up</button>
+          </form>
+        </div>
+
+        <div id='login-form' style='display: none' class='form'>
+          <form action='/login' method='POST' class='column'>
+            <label for='email'>Email:</label>
+            <input type='email' name='email' id='email' required />
+            <br />
+            <label for='password'>Password:</label>
+            <input type='password' name='password' id='password' required />
+            <button type='submit' class='btn'>sign in</button>
+          </form>
+          <button onclick='Login()' class='FB'>facebook Login</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class='frame content'>
+        <div class='web-footer row between'>
+          <div class='row'>
+            <p class='font-16 tab'>關於 STYLiSH</p>
+            <p class='font-16 border-left tab'>服務條款</p>
+            <p class='font-16 border-left tab'>隱私政策</p>
+            <p class='font-16 border-left tab'>聯絡我們</p>
+            <p class='font-16 border-left tab'>FAQ</p>
+          </div>
+          <div class='row'>
+            <div>
+              <img src='/images/line.png' alt='line' />
+              <img src='/images/twitter.png' alt='twitter' />
+              <img src='/images/facebook.png' alt='facebook' />
+            </div>
+            <span>© 2018. All rights reserved.</span>
+          </div>
+        </div>
+        <div class='mb-footer row'>
+          <div class='column content'>
+            <div class='row box1'>
+              <div class='box'>
+                <div class='box-btn row'>
+                  <p class='font-14'>關於 STYLiSH</p>
+                  <p class='font-14'>服務條款</p>
+                </div>
+                <div class='box-btn row'>
+                  <p class='font-14'>隱私政策</p>
+                  <p class='font-14'>聯絡我們</p>
+                </div>
+                <div class='box-btn row'>
+                  <p class='font-14'>FAQ</p>
+                </div>
+              </div>
+              <div class='row images'>
+                <img src='/images/line.png' alt='line' />
+                <img src='/images/twitter.png' alt='twitter' />
+                <img src='/images/facebook.png' alt='facebook' />
+              </div>
+            </div>
+            <span>© 2018. All rights reserved.</span>
+            <div class='row box1'>
+              <div class='row tab'>
+                <img src='/images/cart-mobile.png' alt='cart' id='cart-down' />
+                <p>購物車</p>
+              </div>
+              <div class='row tab'>
+                <img
+                  src='/images/member-mobile.png'
+                  alt='member'
+                  id='member-down'
+                />
+                <p>會員</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <script>
+    const registerForm = document.getElementById('register-form');
+    const loginForm = document.getElementById('login-form');
+    const registerTab = document.querySelector('#register');
+    const loginTab = document.querySelector('#login');
+
+    function toggleForm(formName) {
+      if (formName === 'register') {
+        registerForm.style.display = 'block';
+        loginForm.style.display = 'none';
+        registerTab.classList.add('active');
+        loginTab.classList.remove('active');
+      } else {
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        registerTab.classList.remove('active');
+        loginTab.classList.add('active');
+      }
+    }
+
+    function callApi(data) {
+      fetch('/user/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    }
+
+    function Login() {
+      FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+          const data = {
+            provider: 'facebook',
+            access_token: response.authResponse.accessToken,
+          };
+          callApi(data);
+        } else {
+          // User is not logged in, initiate the login flow
+          FB.login(function (response) {
+            if (response.status === 'connected') {
+              const data = {
+                provider: 'facebook',
+                access_token: response.authResponse.accessToken,
+              };
+              // console.log(response);
+              callApi(data);
+            } else {
+              console.log('Facebook login failed.');
+            }
+          });
+        }
+      });
+    }
+  </script>
+</html>

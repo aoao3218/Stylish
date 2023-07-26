@@ -1,0 +1,174 @@
+@charset "UTF-8";
+.frame960 {
+  max-width: 960px;
+  margin: 65px auto;
+}
+
+.content .main {
+  display: flex;
+  flex-direction: row;
+  height: 680px;
+}
+.content .mainImage {
+  width: 50%;
+  max-height: 680px;
+  margin: 0 40px 0 0;
+  background-size: cover;
+}
+.content .detail {
+  width: 50%;
+  height: 100%;
+}
+.content .detail .title {
+  font-size: 32px;
+}
+.content .detail .id {
+  color: #bababa;
+  font-size: 20px;
+  margin: 16px 0;
+}
+.content .detail .price {
+  font-size: 30px;
+  padding: 20px 0;
+  border-bottom: 1px solid #3f3a3a;
+}
+.content .detail .btn {
+  width: 100%;
+  padding: 17px auto;
+  border-color: #000000;
+  color: #ffffff;
+}
+.content .detail .item {
+  margin: 20px auto;
+}
+.content .detail .item .text {
+  font-size: 20px;
+  border-right: 1px solid #3f3a3a;
+  padding-right: 10px;
+  margin: auto 0;
+}
+.content .detail .item .itemInput {
+  margin: auto 12px;
+  position: relative;
+}
+.content .detail .item .itemInput input {
+  display: flex;
+  width: 100%;
+  text-align: center;
+}
+.content .detail .item .itemInput input[type=number]::-webkit-inner-spin-button,
+.content .detail .item .itemInput input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.content .detail .item .itemInput #add {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
+.content .detail .item .itemInput #sub {
+  position: absolute;
+  top: 10%;
+  left: 0;
+}
+.content .detail .item .itemInput .button {
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  margin-left: 5px;
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.content .detail .item .itemInput .color {
+  width: 36px;
+  height: 36px;
+  margin: auto 10px;
+  border: 4px solid #d3d3d3;
+  cursor: pointer;
+}
+.content .detail .item .itemInput .color-select {
+  outline: 1px solid #000000;
+}
+.content .detail .item .itemInput .size {
+  display: flex;
+  background-color: #ececec;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: auto 10px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.content .detail .item .itemInput .size-select {
+  background-color: #000000;
+  color: #ffffff;
+}
+.content .detail .chart {
+  font-size: 20px;
+  width: 100%;
+  margin: 12px auto;
+  padding: 16px;
+  color: #ffffff;
+  background-color: #000000;
+  border: 0;
+}
+.content .detail .supBox {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin-top: 40px;
+}
+.content .detail .supBox .supplement {
+  font-size: 20px;
+  flex-grow: 1;
+}
+.content .subTitle {
+  font-size: 20px;
+  margin: 48px 0 28px 0;
+  color: #8b572a;
+  position: relative;
+}
+.content .subTitle::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%; /* 将伪元素的垂直位置设置在父元素的中央 */
+  width: 85%;
+  height: 1px;
+  background-color: #ccc;
+  transform: translateY(-50%);
+}
+.content .story {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .frame960 {
+    margin: 0;
+    max-width: 100%;
+  }
+  .content .main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .content .main .mainImage {
+    margin: 0;
+    width: 100%;
+    height: 720px;
+  }
+  .content .detail {
+    padding: 24px;
+    width: 100%;
+  }
+  .sub {
+    padding: 24px;
+  }
+  .sub .subTitle {
+    margin: 0 0 24px 0;
+  }
+}/*# sourceMappingURL=product.css.map */

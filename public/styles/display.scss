@@ -1,0 +1,25 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.border-left {
+  border-left: 1px solid #828282;
+}
+
+.height-80vh {
+  height: 80vh;
+}

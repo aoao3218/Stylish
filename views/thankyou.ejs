@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>thankyou</title>
+  </head>
+  <body>
+    <div class="header row center">
+      <div class="row">
+        <a href="/" class="logo">
+          <img src="/images/logo.png" alt="logo" id="logo" />
+        </a>
+        <div class="web_tab">
+          <a href="/index.html?category=women" class="font-20 tab">女裝</a>
+          <a href="/index.html?category=men" class="font-20 border-left tab">男裝</a>
+          <a href="/index.html?category=accessories" class="font-20 border-left tab"
+            >配件</a
+          >
+        </div>
+      </div>
+      <div class="row">
+        <input type='text' id="search"/>
+        <img src="/images/cart.png" alt="cart" class="icon" id="cart-top" />
+        <a href="/profile.html">
+          <img
+            src="/images/member.png"
+            alt="member"
+            class="icon"
+            id="member-top"
+        /></a>
+      </div>
+    </div>
+    <div class="line">
+      <div class="mb_tab">
+        <a href="/index.html?category=women" class="font-20">女裝</a>
+        <a href="/index.html?category=men" class="font-20 border-left">男裝</a>
+        <a href="/index.html?category=accessories" class="font-20 border-left">配件</a>
+      </div>
+    </div>
+    <div class="frame content height-80vh">
+      <div class="check">
+        <img src="/images/checkout.png" alt="checkout" />
+        <p>付款完成</p>
+        <p>訂單編號:<%= order %></p>
+      </div>
+    </div>
+    <footer>
+      <div class="frame content">
+        <div class="web-footer row between">
+          <div class="row">
+            <p class="font-16 tab">關於 STYLiSH</p>
+            <p class="font-16 border-left tab">服務條款</p>
+            <p class="font-16 border-left tab">隱私政策</p>
+            <p class="font-16 border-left tab">聯絡我們</p>
+            <p class="font-16 border-left tab">FAQ</p>
+          </div>
+          <div class="row">
+            <div>
+              <img src="/images/line.png" alt="line" />
+              <img src="/images/twitter.png" alt="twitter" />
+              <img src="/images/facebook.png" alt="facebook" />
+            </div>
+            <span>© 2018. All rights reserved.</span>
+          </div>
+        </div>
+        <div class="mb-footer row">
+          <div class="column content">
+            <div class="row box1">
+              <div class="box">
+                <div class="box-btn row">
+                  <p class="font-14">關於 STYLiSH</p>
+                  <p class="font-14">服務條款</p>
+                </div>
+                <div class="box-btn row">
+                  <p class="font-14">隱私政策</p>
+                  <p class="font-14">聯絡我們</p>
+                </div>
+                <div class="box-btn row">
+                  <p class="font-14">FAQ</p>
+                </div>
+              </div>
+              <div class="row images">
+                <img src="/images/line.png" alt="line" />
+                <img src="/images/twitter.png" alt="twitter" />
+                <img src="/images/facebook.png" alt="facebook" />
+              </div>
+            </div>
+            <span>© 2018. All rights reserved.</span>
+            <div class="row box1">
+              <div class="row tab">
+                <img src="/images/cart-mobile.png" alt="cart" id="cart-down" />
+                <p>購物車</p>
+              </div>
+              <div class="row tab">
+                <img
+                  src="/images/member-mobile.png"
+                  alt="member"
+                  id="member-down"
+                />
+                <p>會員</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

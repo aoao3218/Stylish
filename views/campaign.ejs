@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Campaign</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <h2>Create New Campaign</h2>
+    <p class="msg" id="message" style="display: none; margin: auto"></p>
+    <form enctype="multipart/form-data" id="campaign">
+      <div class="content">
+        <div class="form-group">
+          <label for="product">Product:</label>
+          <select name="product" id="product" class="form-control" required>
+            <option>select product</option>
+            <% data.forEach(function(item) { %>
+            <option value="<%= item.id %>"><%= item.title %></option>
+            <% }); %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="story">Story:</label>
+          <textarea
+            name="story"
+            id="story"
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group3">
+          <label for="picture">Picture:</label>
+          <input
+            type="file"
+            name="picture"
+            id="picture"
+            class="form-control"
+            accept="image/jpeg,image/png"
+            max-file-size="1048576"
+            required
+          />
+        </div>
+      </div>
+      <button type="submit" class="btn" id="btn">Create Campaign</button>
+    </form>
+    <script src="/js/campaign.js"></script>
+  </body>
+</html>

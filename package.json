@@ -1,0 +1,45 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.335.0",
+    "@aws-sdk/s3-request-presigner": "^3.337.0",
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.2.4",
+    "prettier": "^2.8.8",
+    "prettier-eslint": "^15.0.1",
+    "redis": "^4.6.6",
+    "short-uuid": "^4.2.2",
+    "socket.io": "^4.6.2",
+    "socket.io-client": "^4.6.2",
+    "winston-cloudwatch": "^6.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0"
+  }
+}

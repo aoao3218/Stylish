@@ -1,0 +1,178 @@
+.frame960 {
+  max-width: 960px;
+  margin: 65px auto;
+}
+
+.content {
+  .main {
+    display: flex;
+    flex-direction: row;
+    height: 680px;
+  }
+  .mainImage {
+    width: 50%;
+    max-height: 680px;
+    margin: 0 40px 0 0;
+    background-size: cover;
+  }
+  .detail {
+    width: 50%;
+    height: 100%;
+    .title {
+      font-size: 32px;
+    }
+    .id {
+      color: #bababa;
+      font-size: 20px;
+      margin: 16px 0;
+    }
+    .price {
+      font-size: 30px;
+      padding: 20px 0;
+      border-bottom: 1px solid #3f3a3a;
+    }
+    .btn {
+      width: 100%;
+      padding: 17px auto;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .item {
+      margin: 20px auto;
+      .text {
+        font-size: 20px;
+        border-right: 1px solid #3f3a3a;
+        padding-right: 10px;
+        margin: auto 0;
+      }
+      .itemInput {
+        margin: auto 12px;
+        position: relative;
+        input {
+          display: flex;
+          width: 100%;
+          text-align: center;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        #add {
+          position: absolute;
+          top: 10%;
+          right: 5%;
+        }
+        #sub {
+          position: absolute;
+          top: 10%;
+          left: 0;
+        }
+        .button {
+          background-color: transparent;
+          width: 24px;
+          height: 24px;
+          padding: 5px;
+          margin-left: 5px;
+          font-weight: bold;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        .color {
+          width: 36px;
+          height: 36px;
+          margin: auto 10px;
+          border: 4px solid #d3d3d3;
+          cursor: pointer;
+        }
+        .color-select {
+          outline: 1px solid #000000;
+        }
+        .size {
+          display: flex;
+          background-color: #ececec;
+          border-radius: 50%;
+          width: 36px;
+          height: 36px;
+          margin: auto 10px;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+        }
+        .size-select {
+          background-color: #000000;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .chart {
+      font-size: 20px;
+      width: 100%;
+      margin: 12px auto;
+      padding: 16px;
+      color: #ffffff;
+      background-color: #000000;
+      border: 0;
+    }
+    .supBox {
+      display: flex;
+      flex-direction: column;
+      height: 200px;
+      margin-top: 40px;
+      .supplement {
+        font-size: 20px;
+        flex-grow: 1;
+      }
+    }
+  }
+  .subTitle {
+    font-size: 20px;
+    margin: 48px 0 28px 0;
+    color: #8b572a;
+    position: relative;
+  }
+  .subTitle::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%; /* 将伪元素的垂直位置设置在父元素的中央 */
+    width: 85%;
+    height: 1px;
+    background-color: #ccc;
+    transform: translateY(-50%);
+  }
+  .story {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .frame960 {
+    margin: 0;
+    max-width: 100%;
+  }
+  .content {
+    .main {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      .mainImage {
+        margin: 0;
+        width: 100%;
+        height: 720px;
+      }
+    }
+    .detail {
+      padding: 24px;
+      width: 100%;
+    }
+  }
+  .sub {
+    padding: 24px;
+    .subTitle {
+      margin: 0 0 24px 0;
+    }
+  }
+}

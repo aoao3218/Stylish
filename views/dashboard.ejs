@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="/styles/style.css" />
+        <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+            <div id="total" style="width: 600px; height: 250px"></div>
+            <div id="colors" style="width: 600px; height: 300px"></div>
+            <div id="price" style="width: 700px; height: 300px"></div>
+            <div id="top5" style="width: 700px; height: 300px"></div>
+        </div>
+    </body>
+    <script
+        src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        crossorigin="anonymous"
+    ></script>
+    <script>
+        const socket = io('wss://13.238.255.99:8080');
+        const total = document.getElementById('total');
+        const colors = document.getElementById('colors');
+        const price = document.getElementById('price');
+        const top5 = document.getElementById('top5');
+
+        const fetchTotal = async () => {
+            fetch('https://13.238.255.99/dashboard/total')
+                .then((response) => response.json())
+                .then((data) => {
+                    total.textContent = `Total Revenue: ${data.total}`;
+                })
+                .catch((error) => {
+                    console.log('Error:', error);
+                });
+        };
+
+        const fetchColor = async () => {
+            fetch('https://13.238.255.99/dashboard/colors')
+                .then((response) => response.json())
+                .then((data) => {
+                    const values = data.data.map((obj) => Object.values(obj)[0]);
+                    const labels = data.data.map((obj) => Object.keys(obj)[0]);
+                    Plotly.newPlot(
+                        colors,
+                        [
+                            {
+                                type: 'pie', // all "bar" chart attributes: #bar
+                                values: values, // more about "x": #bar-x
+                                labels: labels, // #bar-y
+                                name: 'bar chart example', // #bar-name
+                            },
+                        ],
+                        {
+                            // all "layout" attributes: #layout
+                            title: 'Product sold percentage in different colors', // more about "layout.title": #layout-title
+                            height: 350,
+                        },
+                    );
+                })
+                .catch((error) => {
+                    console.log('Error:', error);
+                });
+        };
+
+        const fetchPrice = async () => {
+            fetch('https://13.238.255.99/dashboard/price')
+                .then((response) => response.json())
+                .then((data) => {
+                    // const y = data.data.map((obj) => Object.values(obj)[0]);
+                    // const x = data.data.map((obj) => Object.keys(obj)[0]);
+                    const x = data.data.map((obj) => obj.price);
+
+                    Plotly.newPlot(
+                        price,
+                        [
+                            {
+                                type: 'histogram',
+                                x: x,
+                            },
+                        ],
+                        {
+                            // all "layout" attributes: #layout
+                            title: 'Product sold quantity in different price range',
+                            xaxis: {
+                                title: 'Price Range',
+                            },
+                            yaxis: {
+                                title: 'Quantity',
+                            },
+                        },
+                    );
+                })
+                .catch((error) => {
+                    console.log('Error:', error);
+                });
+        };
+
+        const fetchTop5 = async () => {
+            fetch('https://13.238.255.99/dashboard/top5')
+                .then((response) => response.json())
+                .then((data) => {
+                    const x = data.data.map((obj) => {
+                        const id = Object.keys(obj)[0];
+                        return `product${id}`;
+                    });
+                    const S = data.data.map((obj) => obj.S);
+                    const M = data.data.map((obj) => obj.M);
+                    const L = data.data.map((obj) => obj.L);
+                    Plotly.newPlot(
+                        top5,
+                        [
+                            {
+                                type: 'bar',
+                                x: x,
+                                y: S,
+                                name: 'S', // #bar-name
+                            },
+                            {
+                                type: 'bar', // all "bar" chart attributes: #bar
+                                x: x,
+                                y: M,
+                                name: 'M', // #bar-name
+                            },
+                            {
+                                type: 'bar', // all "bar" chart attributes: #bar
+                                x: x,
+                                y: L,
+                                name: 'L', // #bar-name
+                            },
+                        ],
+                        {
+                            title: 'Quantity of top 5 sold products in different sizes',
+                            yaxis: {
+                                title: 'Quantity',
+                            },
+                            barmode: 'stack',
+                        },
+                    );
+                });
+        };
+
+        fetchTotal();
+        fetchPrice();
+        fetchColor();
+        fetchTop5();
+
+        socket.on('update', () => {
+            fetchTotal();
+            fetchPrice();
+            fetchColor();
+            fetchTop5();
+        });
+    </script>
+</html>

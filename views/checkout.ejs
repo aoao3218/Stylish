@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
+    <title>checkout</title>
+  </head>
+  <body>
+    <div class="header row center">
+      <div class="row">
+        <a href="/" class="logo">
+          <img src="/images/logo.png" alt="logo" id="logo" />
+        </a>
+        <div class="web_tab">
+          <a href="/index.html?category=women" class="font-20 tab">女裝</a>
+          <a href="/index.html?category=men" class="font-20 border-left tab">男裝</a>
+          <a href="/index.html?category=accessories" class="font-20 border-left tab"
+            >配件</a
+          >
+        </div>
+      </div>
+      <div class="row">
+        <input type='text' id="search"/>
+        <img src="/images/cart.png" alt="cart" class="icon" id="cart-top" />
+        <a href="/profile.html">
+          <img
+            src="/images/member.png"
+            alt="member"
+            class="icon"
+            id="member-top"
+        /></a>
+      </div>
+    </div>
+    <div class="line">
+      <div class="mb_tab">
+        <a href="/index.html?category=women" class="font-20">女裝</a>
+        <a href="/index.html?category=men" class="font-20 border-left">男裝</a>
+        <a href="/index.html?category=accessories" class="font-20 border-left">配件</a>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="content column">
+        <form id="checkout">
+          <div class="column info" style="margin: 48px 0">
+            <p class="title">訂購資料</p>
+            <div class="input">
+              <label for="name">收件人姓名</label>
+              <input type="text" name="name" required />
+            </div>
+            <div class="input">
+              <label for="phone">手機</label>
+              <input type="text" name="phone" required />
+            </div>
+            <div class="input">
+              <label for="">地址</label>
+              <input type="text" name="address" required />
+            </div>
+            <div class="input">
+              <label for="email">Email</label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="input row">
+              <label for="time">配送時間</label>
+              <div class="row">
+                <input
+                  type="radio"
+                  id="morning"
+                  name="time"
+                  value="morning"
+                  checked
+                />
+                <label for="morning">08:00-12:00</label><br />
+                <input
+                  type="radio"
+                  id="afternoon"
+                  name="time"
+                  value="afternoon"
+                />
+                <label for="afternoon">14:00-18:00</label><br />
+                <input type="radio" id="anytime" name="time" value="anytime" />
+                <label for="anytime">不指定</label>
+              </div>
+            </div>
+          </div>
+          <div class="column info">
+            <p class="title">付款資料</p>
+            <div class="card-number-group input">
+              <label for="card-number" class="control-label">卡號</label>
+              <div class="form-control card-number Outer"></div>
+            </div>
+            <div class="expiration-date-group input">
+              <label for="expiration-date" class="control-label"
+                >卡片到期日</label
+              >
+              <div
+                class="form-control expiration-date Outer"
+                id="tappay-expiration-date"
+              ></div>
+            </div>
+            <div class="ccv-group input">
+              <label for="ccv" class="control-label">卡片後三碼</label>
+              <div class="form-control ccv Outer"></div>
+            </div>
+          </div>
+          <p class="msg" id="message" style="display: none; margin: auto"></p>
+          <div style="width: 100%; display: flex; justify-content: right">
+            <button type="submit" class="btn" style="margin: 0">
+              確認付款
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <div class="frame content">
+        <div class="web-footer row between">
+          <div class="row">
+            <p class="font-16 tab">關於 STYLiSH</p>
+            <p class="font-16 border-left tab">服務條款</p>
+            <p class="font-16 border-left tab">隱私政策</p>
+            <p class="font-16 border-left tab">聯絡我們</p>
+            <p class="font-16 border-left tab">FAQ</p>
+          </div>
+          <div class="row">
+            <div>
+              <img src="/images/line.png" alt="line" />
+              <img src="/images/twitter.png" alt="twitter" />
+              <img src="/images/facebook.png" alt="facebook" />
+            </div>
+            <span>© 2018. All rights reserved.</span>
+          </div>
+        </div>
+        <div class="mb-footer row">
+          <div class="column content">
+            <div class="row box1">
+              <div class="box">
+                <div class="box-btn row">
+                  <p class="font-14">關於 STYLiSH</p>
+                  <p class="font-14">服務條款</p>
+                </div>
+                <div class="box-btn row">
+                  <p class="font-14">隱私政策</p>
+                  <p class="font-14">聯絡我們</p>
+                </div>
+                <div class="box-btn row">
+                  <p class="font-14">FAQ</p>
+                </div>
+              </div>
+              <div class="row images">
+                <img src="/images/line.png" alt="line" />
+                <img src="/images/twitter.png" alt="twitter" />
+                <img src="/images/facebook.png" alt="facebook" />
+              </div>
+            </div>
+            <span>© 2018. All rights reserved.</span>
+            <div class="row box1">
+              <div class="row tab">
+                <img src="/images/cart-mobile.png" alt="cart" id="cart-down" />
+                <p>購物車</p>
+              </div>
+              <div class="row tab">
+                <img
+                  src="/images/member-mobile.png"
+                  alt="member"
+                  id="member-down"
+                />
+                <p>會員</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="/js/checkout.js"></script>
+</html>
